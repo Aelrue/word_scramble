@@ -14,8 +14,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* min-height: 100vh; means that the minimum height of an element should be 100% of the viewport height. It is a CSS media query used 
-to set the minimum height of an element to be equal to the height of the viewport. */
+  /* min-height: 100vh; means that the minimum height of an element should be 100% of the 
+  viewport height. It is a CSS media query used to set the minimum height of an 
+  element to be equal to the height of the viewport. */
   min-height: 100vh;
   background: #1d817e;
 }
@@ -67,4 +68,33 @@ to set the minimum height of an element to be equal to the height of the viewpor
   padding: 0 16px;
   border-radius: 5px;
   border: 1px solid #c0b2ad;
+}
+
+.content .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buttons button {
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  /* Calc() is a function that allows us to perform calculations when specifying 
+  CSS property values. Simplifies the positioning of an item with 
+  an already predetermined margin. wherever length, percentage, time, numbers, integers, 
+  frequencies, and angles are specified, this function can be used.*/
+  width: calc(100% / 2 - 8px);
+  font-size: 17px;
+  border-radius: 5px;
+  padding: 15px 0;
+}
+
+.buttons .refresh {
+  background: #6c757d;
+}
+
+.buttons .check {
+  background: #1d817e;
 }
