@@ -1,5 +1,10 @@
 const wordText = document.querySelector(".word");
 hintText = document.querySelector(".hint span");
+inputField = document.querySelector("input");
+refreshBtn = document.querySelector(".refresh");
+checkBtn = document.querySelector(".check");
+
+let correctAnswer;
 
 const initGame = () => {
   let randomObj = words[Math.floor(Math.random() * words.length)];
@@ -12,6 +17,22 @@ const initGame = () => {
   // in this case, .join("") is used to join the letters together with no spaces or commas
   wordText.innerText = wordArray.join(""); //passing shuffled word as wordText
   hintText.innerText = randomObj.hint; //passing random object hint as hintText
+  correctAnswer = randomObj.word.toLowerCase(); //passing random word as correctAnswer
   console.log(randomObj.word);
 };
+
 initGame();
+
+const checkAnswer = () => {
+  let userWord = inputField.value.toLocaleLowerCase();
+  if (!userWord) {
+    alert("Please enter a word.");
+  }
+  if (userWord !== correctAnswer) {
+    alert(`Oops! ${userWord} is not the correct answer. Try again!`);
+    inputField.value = "";
+  }
+};
+
+refreshBtn.addEventListener("click", initGame);
+checkBtn.addEventListener("click", checkAnswer);
