@@ -9,8 +9,12 @@
     from firing until the script has loaded and finished evaluating. This attribute 
     must not be used if the src attribute is absent (i.e. for inline scripts), 
     in this case it would have no effect. -->
-    <script src="scripts/script.js" defer></script>
     <script src="scripts/words.js" defer></script>
+    <!-- initially had script.js sourced first and was getting an error
+    in console saying "words" was not defined in script.js. Swapped so words.js 
+was first -->
+    <script src="scripts/script.js" defer></script>
+
     <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
