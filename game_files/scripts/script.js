@@ -1,12 +1,27 @@
 const wordText = document.querySelector(".word");
 hintText = document.querySelector(".hint span");
+timeText = document.querySelector(".time b");
 inputField = document.querySelector("input");
 refreshBtn = document.querySelector(".refresh");
 checkBtn = document.querySelector(".check");
 
-let correctAnswer;
+let correctAnswer, timer;
+
+const initTimer = (maxTime) => {
+  clearInterval(timer); //clearing timer
+  timer = setInterval(() => {
+    if (maxTime > 0) {
+      maxTime--; //decrementing maxTime by 1
+      return (timeText.innerText = maxTime); //passing maxTime value to timerText}
+    }
+    clearInterval(timer); //clearing timer
+    alert(`Time's up! ${correctAnswer.toUpperCase()} was the correct answer.`);
+    initGame(); //calling initGame function so game can restart
+  }, 1000);
+};
 
 const initGame = () => {
+  initTimer(30); //passing 30 as maxTime value to initTimer
   let randomObj = words[Math.floor(Math.random() * words.length)];
   let wordArray = randomObj.word.split(""); //splitting each letter of random word
   for (let i = wordArray.length - 1; i > 0; i--) {
