@@ -18,20 +18,21 @@ const initGame = () => {
   wordText.innerText = wordArray.join(""); //passing shuffled word as wordText
   hintText.innerText = randomObj.hint; //passing random object hint as hintText
   correctAnswer = randomObj.word.toLowerCase(); //passing random word as correctAnswer
-  console.log(randomObj.word);
+  inputField.value = ""; //clearing input field
+  inputField.setAttribute("maxlength", correctAnswer.length); //setting max length of input field to length of correctAnswer
+  console.log(randomObj);
 };
 
 initGame();
 
 const checkAnswer = () => {
-  let userWord = inputField.value.toLocaleLowerCase();
-  if (!userWord) {
-    alert("Please enter a word.");
-  }
-  if (userWord !== correctAnswer) {
-    alert(`Oops! ${userWord} is not the correct answer. Try again!`);
-    inputField.value = "";
-  }
+  let userWord = inputField.value.toLocaleLowerCase(); //getting user input
+  if (!userWord) return alert("Please enter a word.");
+
+  if (userWord !== correctAnswer)
+    return alert(`Oops! ${userWord} is not the correct answer. Try again!`);
+  alert(`Congrats! ${userWord.toUpperCase()} is the correct answer!`);
+  initGame();
 };
 
 refreshBtn.addEventListener("click", initGame);
